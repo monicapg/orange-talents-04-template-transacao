@@ -14,11 +14,9 @@
 	<name>transacoes</name>
 	<description>Desafio Transações com Kafka </description>
 
-
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-
 
 	<dependencies>
 		<dependency>
@@ -40,6 +38,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<!--DB POSTGRES-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -64,8 +63,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
 
+	<!--Kafka listener-->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
