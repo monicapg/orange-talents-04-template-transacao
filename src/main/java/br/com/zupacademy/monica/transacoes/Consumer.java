@@ -10,7 +10,7 @@ class Consumer {
 
     @KafkaListener(groupId = "kafka_transacoes", topics = "transacoes")
     void transacoes(TransacaoRequest transacaoRequest){
-    System.out.println("teste: "+ transacaoRequest.getId());
+    //System.out.println("teste: "+ transacaoRequest.toString());
 
     }
 

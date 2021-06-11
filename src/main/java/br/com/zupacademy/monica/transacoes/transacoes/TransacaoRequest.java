@@ -61,5 +61,14 @@ public class TransacaoRequest {
         return efetivadaEm;
     }
 
-
+    @Override
+    public String toString() {
+        return "TransacaoRequest{" +
+                "id='" + id + '\'' +
+                ", valor=" + valor +
+                ", estabelecimento=" + estabelecimento +
+                ", cartao=" + cartao +
+                ", efetivadaEm=" + efetivadaEm +
+                '}';
+    }
 }

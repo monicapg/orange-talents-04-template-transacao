@@ -36,4 +36,13 @@ public class Cartao {
     public void setTransacoes(List<Transacao> transacoes) {
         this.transacoes = transacoes;
     }
+
+    @Override
+    public String toString() {
+        return "Cartao{" +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", transacoes=" + transacoes +
+                '}';
+    }
 }

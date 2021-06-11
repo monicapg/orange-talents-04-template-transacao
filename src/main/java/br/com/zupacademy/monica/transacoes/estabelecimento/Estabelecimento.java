@@ -27,4 +27,14 @@ public class Estabelecimento {
         this.endereco = endereco;
     }
 
+    @Override
+    public String toString() {
+        return "Estabelecimento{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", transacoes=" + transacoes +
+                '}';
+    }
 }
