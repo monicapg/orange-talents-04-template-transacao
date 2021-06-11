@@ -18,6 +18,9 @@ public class Estabelecimento {
     @OneToMany(mappedBy = "estabelecimento")
     List<Transacao> transacoes;
 
+    @Deprecated
+    public Estabelecimento(){}
+
     public Estabelecimento(String nome, String cidade, String endereco) {
         this.nome = nome;
         this.cidade = cidade;

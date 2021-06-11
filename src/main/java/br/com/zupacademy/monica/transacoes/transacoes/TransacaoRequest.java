@@ -22,6 +22,9 @@ public class TransacaoRequest {
     @JsonProperty
     LocalDateTime efetivadaEm;
 
+    @Deprecated
+    public TransacaoRequest(){}
+
     @JsonCreator
     public TransacaoRequest(@JsonProperty("id") String id,
                             @JsonProperty("valor")BigDecimal valor,

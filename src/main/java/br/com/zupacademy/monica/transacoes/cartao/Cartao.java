@@ -16,6 +16,15 @@ public class Cartao {
     @OneToMany(mappedBy = "cartao")
     List<Transacao> transacoes;
 
+
+    @Deprecated
+    public Cartao(){}
+
+    public Cartao(String id, String email) {
+        this.id = id;
+        this.email = email;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
