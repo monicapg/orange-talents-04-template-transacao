@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/transacao")
 public class TransacaoController {
 
     @Autowired
@@ -35,12 +35,6 @@ public class TransacaoController {
         }
         return ResponseEntity.notFound().build();
 
-
-
-
-
     }
-
-
 
 }

@@ -18,11 +18,16 @@ public class Cartao {
 
 
     @Deprecated
-    public Cartao(){}
+    public Cartao() {
+    }
 
     public Cartao(String idCartao, String email) {
         this.idCartao = idCartao;
         this.email = email;
+    }
+
+    public String getIdCartao() {
+        return idCartao;
     }
 
     public void setIdCartao(String idCartao) {
@@ -33,8 +38,16 @@ public class Cartao {
         this.email = email;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setTransacoes(List<Transacao> transacoes) {
         this.transacoes = transacoes;
+    }
+
+    public List<Transacao> getTransacoes() {
+        return transacoes;
     }
 
     @Override

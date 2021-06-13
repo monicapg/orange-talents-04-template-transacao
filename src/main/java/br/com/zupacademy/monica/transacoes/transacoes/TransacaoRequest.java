@@ -7,12 +7,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public class TransacaoRequest {
 
     @JsonProperty
-    String idCartao;
+    String id;
     @JsonProperty
     BigDecimal valor;
     @JsonProperty
@@ -27,20 +26,20 @@ public class TransacaoRequest {
     }
 
     @JsonCreator
-    public TransacaoRequest(@JsonProperty("id") String idCartao,
+    public TransacaoRequest(@JsonProperty("id") String id,
                             @JsonProperty("valor") BigDecimal valor,
                             @JsonProperty("estabelecimento") Estabelecimento estabelecimento,
                             @JsonProperty("cartao") Cartao cartao,
                             @JsonProperty("efetivadaEm") LocalDateTime efetivadaEm) {
-        this.idCartao = idCartao;
+        this.id = id;
         this.valor = valor;
         this.estabelecimento = estabelecimento;
         this.cartao = cartao;
         this.efetivadaEm = efetivadaEm;
     }
 
-    public String getIdCartao() {
-        return idCartao;
+    public String getId() {
+        return id;
     }
 
     public BigDecimal getValor() {
@@ -62,7 +61,7 @@ public class TransacaoRequest {
     @Override
     public String toString() {
         return "TransacaoRequest{" +
-                "id='" + idCartao + '\'' +
+                "id='" + id + '\'' +
                 ", valor=" + valor +
                 ", estabelecimento=" + estabelecimento +
                 ", cartao=" + cartao +
@@ -70,7 +69,7 @@ public class TransacaoRequest {
                 '}';
     }
 
-//    public Transacao paraTransacao() {
+    //    public Transacao paraTransacao() {
 //        return new Transacao(
 //                UUID.fromString(this.idCartao),
 //                this.valor,
@@ -81,6 +80,7 @@ public class TransacaoRequest {
 //    }
     public Transacao paraTransacao() {
         return new Transacao(
+                this.id,
                 this.valor,
                 this.estabelecimento,
                 this.cartao,
