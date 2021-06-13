@@ -5,14 +5,14 @@ import br.com.zupacademy.monica.transacoes.estabelecimento.Estabelecimento;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class TransacaoRequest {
 
     @JsonProperty
-    String id;
+    String idCartao;
     @JsonProperty
     BigDecimal valor;
     @JsonProperty
@@ -23,26 +23,24 @@ public class TransacaoRequest {
     LocalDateTime efetivadaEm;
 
     @Deprecated
-    public TransacaoRequest(){}
+    public TransacaoRequest() {
+    }
 
     @JsonCreator
-    public TransacaoRequest(@JsonProperty("id") String id,
-                            @JsonProperty("valor")BigDecimal valor,
-                            @JsonProperty("estabelecimento")Estabelecimento estabelecimento,
-                            @JsonProperty("cartao")Cartao cartao,
-                            @JsonProperty("efetivadaEm")LocalDateTime efetivadaEm) {
-        this.id = id;
+    public TransacaoRequest(@JsonProperty("id") String idCartao,
+                            @JsonProperty("valor") BigDecimal valor,
+                            @JsonProperty("estabelecimento") Estabelecimento estabelecimento,
+                            @JsonProperty("cartao") Cartao cartao,
+                            @JsonProperty("efetivadaEm") LocalDateTime efetivadaEm) {
+        this.idCartao = idCartao;
         this.valor = valor;
         this.estabelecimento = estabelecimento;
         this.cartao = cartao;
         this.efetivadaEm = efetivadaEm;
     }
 
-
-
-
-    public String getId() {
-        return id;
+    public String getIdCartao() {
+        return idCartao;
     }
 
     public BigDecimal getValor() {
@@ -64,11 +62,30 @@ public class TransacaoRequest {
     @Override
     public String toString() {
         return "TransacaoRequest{" +
-                "id='" + id + '\'' +
+                "id='" + idCartao + '\'' +
                 ", valor=" + valor +
                 ", estabelecimento=" + estabelecimento +
                 ", cartao=" + cartao +
                 ", efetivadaEm=" + efetivadaEm +
                 '}';
+    }
+
+//    public Transacao paraTransacao() {
+//        return new Transacao(
+//                UUID.fromString(this.idCartao),
+//                this.valor,
+//                this.estabelecimento,
+//                this.cartao,
+//                this.efetivadaEm);
+//
+//    }
+    public Transacao paraTransacao() {
+        return new Transacao(
+                this.idCartao,
+                this.valor,
+                this.estabelecimento,
+                this.cartao,
+                this.efetivadaEm);
+
     }
 }

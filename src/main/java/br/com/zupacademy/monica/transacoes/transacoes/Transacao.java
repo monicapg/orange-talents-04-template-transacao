@@ -2,6 +2,8 @@ package br.com.zupacademy.monica.transacoes.transacoes;
 
 import br.com.zupacademy.monica.transacoes.cartao.Cartao;
 import br.com.zupacademy.monica.transacoes.estabelecimento.Estabelecimento;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.id.UUIDGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -9,11 +11,11 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "transacao")
 public class Transacao {
 
     @Id
-    UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    String id;
     BigDecimal valor;
     @ManyToOne(cascade = CascadeType.ALL)
     Estabelecimento estabelecimento;
@@ -24,14 +26,15 @@ public class Transacao {
 
     public Transacao(TransacaoRequest transacaoRequest) {
 
-        this.id =  UUID.fromString(transacaoRequest.getId());
+        //this.id = UUID.fromString(transacaoRequest.getIdCartao());
+        this.id = transacaoRequest.getIdCartao();
         this.valor = transacaoRequest.getValor();
         this.estabelecimento = transacaoRequest.getEstabelecimento();
         this.cartao = transacaoRequest.getCartao();
         this.efetivadaEm = transacaoRequest.getEfetivadaEm();
 
     }
-    public Transacao(UUID id, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao, LocalDateTime efetivadaEm) {
+    public Transacao(String id, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao, LocalDateTime efetivadaEm) {
         this.id = id;
         this.valor = valor;
         this.estabelecimento = estabelecimento;
@@ -41,4 +44,6 @@ public class Transacao {
 
     @Deprecated
     public Transacao(){}
+
+
 }

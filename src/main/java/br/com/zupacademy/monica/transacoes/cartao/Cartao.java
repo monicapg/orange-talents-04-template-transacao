@@ -11,7 +11,7 @@ import java.util.List;
 public class Cartao {
 
     @Id
-    String id;
+    String idCartao;
     String email;
     @OneToMany(mappedBy = "cartao")
     List<Transacao> transacoes;
@@ -20,13 +20,13 @@ public class Cartao {
     @Deprecated
     public Cartao(){}
 
-    public Cartao(String id, String email) {
-        this.id = id;
+    public Cartao(String idCartao, String email) {
+        this.idCartao = idCartao;
         this.email = email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdCartao(String idCartao) {
+        this.idCartao = idCartao;
     }
 
     public void setEmail(String email) {
@@ -40,7 +40,7 @@ public class Cartao {
     @Override
     public String toString() {
         return "Cartao{" +
-                "id='" + id + '\'' +
+                "id='" + idCartao + '\'' +
                 ", email='" + email + '\'' +
                 ", transacoes=" + transacoes +
                 '}';
