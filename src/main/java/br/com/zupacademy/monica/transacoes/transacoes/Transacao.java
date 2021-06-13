@@ -15,7 +15,7 @@ public class Transacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String id;
+    Long id;
     BigDecimal valor;
     @ManyToOne(cascade = CascadeType.ALL)
     Estabelecimento estabelecimento;
@@ -26,16 +26,13 @@ public class Transacao {
 
     public Transacao(TransacaoRequest transacaoRequest) {
 
-        //this.id = UUID.fromString(transacaoRequest.getIdCartao());
-        this.id = transacaoRequest.getIdCartao();
         this.valor = transacaoRequest.getValor();
         this.estabelecimento = transacaoRequest.getEstabelecimento();
         this.cartao = transacaoRequest.getCartao();
         this.efetivadaEm = transacaoRequest.getEfetivadaEm();
 
     }
-    public Transacao(String id, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao, LocalDateTime efetivadaEm) {
-        this.id = id;
+    public Transacao(BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao, LocalDateTime efetivadaEm) {
         this.valor = valor;
         this.estabelecimento = estabelecimento;
         this.cartao = cartao;

@@ -81,7 +81,6 @@ public class TransacaoRequest {
 //    }
     public Transacao paraTransacao() {
         return new Transacao(
-                this.idCartao,
                 this.valor,
                 this.estabelecimento,
                 this.cartao,
