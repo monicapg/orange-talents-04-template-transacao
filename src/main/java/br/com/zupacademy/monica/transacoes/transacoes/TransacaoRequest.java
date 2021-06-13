@@ -85,6 +85,5 @@ public class TransacaoRequest {
                 this.estabelecimento,
                 this.cartao,
                 this.efetivadaEm);
-
     }
 }

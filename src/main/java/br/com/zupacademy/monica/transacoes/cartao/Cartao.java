@@ -1,6 +1,8 @@
 package br.com.zupacademy.monica.transacoes.cartao;
 
 import br.com.zupacademy.monica.transacoes.transacoes.Transacao;
+import br.com.zupacademy.monica.transacoes.views.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,27 +13,27 @@ import java.util.List;
 public class Cartao {
 
     @Id
-    String idCartao;
+    String id;
     String email;
     @OneToMany(mappedBy = "cartao")
+    @JsonView(Views.Detailed.class)
     List<Transacao> transacoes;
-
 
     @Deprecated
     public Cartao() {
     }
 
-    public Cartao(String idCartao, String email) {
-        this.idCartao = idCartao;
+    public Cartao(String id, String email) {
+        this.id = id;
         this.email = email;
     }
 
-    public String getIdCartao() {
-        return idCartao;
+    public String getId() {
+        return id;
     }
 
-    public void setIdCartao(String idCartao) {
-        this.idCartao = idCartao;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setEmail(String email) {
@@ -53,7 +55,7 @@ public class Cartao {
     @Override
     public String toString() {
         return "Cartao{" +
-                "id='" + idCartao + '\'' +
+                "id='" + id + '\'' +
                 ", email='" + email + '\'' +
                 ", transacoes=" + transacoes +
                 '}';

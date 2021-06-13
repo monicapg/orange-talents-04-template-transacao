@@ -102,6 +102,7 @@ services:
     image: 'zupacademy/contas'
     ports:
       - 8888:8888
+    restart: always
     environment:
       SERVER_PORT: 8888
       LOG_LEVEL: INFO

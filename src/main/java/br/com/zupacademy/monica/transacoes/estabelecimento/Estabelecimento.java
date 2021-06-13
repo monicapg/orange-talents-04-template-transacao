@@ -1,21 +1,24 @@
 package br.com.zupacademy.monica.transacoes.estabelecimento;
 
 import br.com.zupacademy.monica.transacoes.transacoes.Transacao;
+import br.com.zupacademy.monica.transacoes.views.Views;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Estabelecimento {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String nome;
     String cidade;
     String endereco;
     @OneToMany(mappedBy = "estabelecimento")
+    @JsonView(Views.Detailed.class)
     List<Transacao> transacoes;
 
     @Deprecated
